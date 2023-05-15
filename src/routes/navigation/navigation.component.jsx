@@ -8,6 +8,8 @@ const Navigation = () => {
             <div>
                 <Link to='/feeds'>feed</Link>
                 <Link to='/create-feed'>create feed</Link>
+                <Link to='/signup'>signup</Link>
+                <Link to='/login'>login</Link>
             </div>
             <Outlet />
         </>
