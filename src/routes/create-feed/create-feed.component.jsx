@@ -3,21 +3,21 @@ import { useState } from "react";
 const CreateFeed = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [image, setImage] = useState(null);
     const [errorMessages, setErrorMessages] = useState([]);
 
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = {
-            title: title,
-            content: content,
-        };
+
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("content", content);
+        formData.append("image", image);
+
         fetch("http://localhost:8080/feed/post", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
+            body: formData,
         })
             .then((response) => {
                 if (response.ok) {
@@ -64,6 +64,14 @@ const CreateFeed = () => {
                         id="content"
                         value={content}
                         onChange={(event) => setContent(event.target.value)}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="image">Image:</label>
+                    <input
+                        type="file"
+                        id="image"
+                        onChange={(event) => setImage(event.target.files[0])}
                     />
                 </div>
                 <button type="submit">Create Post</button>
