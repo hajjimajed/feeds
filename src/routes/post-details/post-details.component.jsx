@@ -3,6 +3,8 @@ import { useState, useEffect, useContext } from "react";
 
 import { JwtTokenContext } from "../../contexts/jwt-token.context";
 
+import Button from '../../components/button/button.component'
+
 
 const PostDetails = () => {
     const { _id } = useParams();
@@ -73,7 +75,7 @@ const PostDetails = () => {
                 <h3>{post.creator.name}</h3>
 
                 <Link to={`/post/edit/${_id}`}>edit post</Link>
-                <button type="button" onClick={handleDelete}>Delete</button>
+                <Button type="button" onClick={handleDelete}>Delete</Button>
             </>
         );
     }

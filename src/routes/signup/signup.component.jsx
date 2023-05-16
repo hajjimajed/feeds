@@ -1,4 +1,7 @@
 import { useState } from "react";
+import './signup.styles.scss'
+
+import Button from '../../components/button/button.component'
 
 const Signup = () => {
 
@@ -31,7 +34,7 @@ const Signup = () => {
     };
 
     return (
-        <div>
+        <div className="signup-container">
             <h1>Signup</h1>
             {error && <p>{error}</p>}
             <form onSubmit={handleSubmit}>
@@ -59,7 +62,7 @@ const Signup = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <button type="submit">Signup</button>
+                <Button type="submit">Signup</Button>
             </form>
         </div>
     )

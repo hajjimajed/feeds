@@ -1,20 +1,47 @@
-import { Link, Outlet } from 'react-router-dom';
-
+import { NavLink, Outlet } from 'react-router-dom';
+import './navigation.styles.scss';
 
 const Navigation = () => {
-
     return (
         <>
-            <div>
-                <Link to='/feeds'>feed</Link>
-                <Link to='/create-feed'>create feed</Link>
-                <Link to='/signup'>signup</Link>
-                <Link to='/login'>login</Link>
+            <div className='navigation-container'>
+                <div className='navigation-section'>
+                    <NavLink
+                        className='navigation-link'
+                        activeclassName='active'
+                        to='/feeds'
+                        exact
+                    >
+                        feeds
+                    </NavLink>
+                    <NavLink
+                        className='navigation-link'
+                        activeclassName='active'
+                        to='/create-feed'
+                    >
+                        create feed
+                    </NavLink>
+                </div>
+                <div className='navigation-section'>
+                    <NavLink
+                        className='navigation-link'
+                        activeclassName='active'
+                        to='/signup'
+                    >
+                        signup
+                    </NavLink>
+                    <NavLink
+                        className='navigation-link'
+                        activeclassName='active'
+                        to='/login'
+                    >
+                        login
+                    </NavLink>
+                </div>
             </div>
             <Outlet />
         </>
-    )
-
-}
+    );
+};
 
 export default Navigation;

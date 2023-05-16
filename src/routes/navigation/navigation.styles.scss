@@ -1,0 +1,62 @@
+.navigation-container {
+    width: 100vw;
+    height: 65px;
+    border-bottom: 1px solid #a8a8a86f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 700;
+
+    .navigation-section {
+        width: 45%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .navigation-link {
+            margin-left: 40px;
+            color: #00000061;
+            cursor: pointer;
+            transition: 0.2s ease-in-out all;
+
+            &:hover {
+                color: #000000;
+            }
+        }
+
+        .navigation-link.active {
+            color: #000000;
+            /* Add any additional styles for the active link here */
+        }
+    }
+
+    .navigation-section:last-child {
+        justify-content: flex-end;
+
+        .navigation-link {
+            margin-left: 0;
+            margin-right: 40px;
+        }
+
+        .navigation-link:last-child {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 15px;
+            color: #fff;
+            background-color: #3a86ff;
+            cursor: pointer;
+            transition: 0.2s ease-in-out all;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                background-color: #000000;
+            }
+        }
+    }
+}

@@ -1,5 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './login.styles.scss'
+
+import Button from '../../components/button/button.component'
 
 import { JwtTokenContext } from '../../contexts/jwt-token.context';
 
@@ -46,7 +49,7 @@ const Login = () => {
 
 
     return (
-        <div>
+        <div className='login-container'>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -57,7 +60,7 @@ const Login = () => {
                     <label>Password:</label>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <button type="submit">Login</button>
+                <Button type="submit">Login</Button>
             </form>
         </div>
     );

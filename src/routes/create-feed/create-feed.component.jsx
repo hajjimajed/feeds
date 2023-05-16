@@ -1,4 +1,7 @@
 import { useState, useContext } from "react";
+import './create-feed.styles.scss'
+
+import Button from '../../components/button/button.component'
 
 import { JwtTokenContext } from "../../contexts/jwt-token.context";
 
@@ -49,7 +52,7 @@ const CreateFeed = () => {
 
 
     return (
-        <div>
+        <div className="create-feed-container">
             <div>
                 {errorMessages.map((errorMessage) => (
                     <div key={errorMessage}>{errorMessage}</div>
@@ -81,7 +84,7 @@ const CreateFeed = () => {
                         onChange={(event) => setImage(event.target.files[0])}
                     />
                 </div>
-                <button type="submit">Create Post</button>
+                <Button type="submit">Create Post</Button>
             </form>
         </div>
     );

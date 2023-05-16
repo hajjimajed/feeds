@@ -1,0 +1,41 @@
+.button-container {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    background-color: #3a86ff;
+    cursor: pointer;
+    transition: 0.2s ease-in-out all;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+    font-size: 14px;
+    font-weight: 500;
+
+    &:hover {
+        background-color: #000000;
+    }
+
+    &.delete {
+        background-color: #f72585;
+        color: white;
+
+        &:hover {
+            background-color: #000000;
+        }
+    }
+
+    &.details {
+        background-color: #7209b7;
+        color: white;
+
+        &:hover {
+            background-color: #000000;
+        }
+    }
+
+
+
+}

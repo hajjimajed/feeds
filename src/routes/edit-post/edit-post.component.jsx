@@ -1,5 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
+import './edit-post.styles.scss'
+
+import Button from '../../components/button/button.component'
 
 import { JwtTokenContext } from "../../contexts/jwt-token.context";
 
@@ -71,7 +74,7 @@ const EditPost = () => {
 
 
     return (
-        <div>
+        <div className="edit-feed-container">
             <h1>Edit Post</h1>
             {post ? (
                 <form onSubmit={handleSubmit}>
@@ -102,7 +105,7 @@ const EditPost = () => {
                             onChange={(event) => setImage(event.target.files[0])}
                         />
                     </div>
-                    <button type="submit">Update Post</button>
+                    <Button type="submit">Update Post</Button>
                 </form>
             ) : (
                 <p>Loading post...</p>

@@ -1,0 +1,32 @@
+.login-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type='email'],
+input[type='password'] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
