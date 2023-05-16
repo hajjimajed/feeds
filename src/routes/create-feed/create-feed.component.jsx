@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { JwtTokenContext } from "../../contexts/jwt-token.context";
 
 const CreateFeed = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [image, setImage] = useState(null);
     const [errorMessages, setErrorMessages] = useState([]);
+
+    const { jwtToken } = useContext(JwtTokenContext);
 
 
     const handleSubmit = (event) => {
@@ -18,6 +22,9 @@ const CreateFeed = () => {
         fetch("http://localhost:8080/feed/post", {
             method: "POST",
             body: formData,
+            headers: {
+                Authorization: 'Bearer ' + jwtToken
+            }
         })
             .then((response) => {
                 if (response.ok) {

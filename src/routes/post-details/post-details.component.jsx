@@ -1,5 +1,7 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+
+import { JwtTokenContext } from "../../contexts/jwt-token.context";
 
 
 const PostDetails = () => {
@@ -9,10 +11,14 @@ const PostDetails = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    console.log(_id)
+    const { jwtToken } = useContext(JwtTokenContext);
 
     useEffect(() => {
-        fetch(`http://localhost:8080/feed/post/${_id}`)
+        fetch(`http://localhost:8080/feed/post/${_id}`, {
+            headers: {
+                Authorization: 'Bearer ' + jwtToken
+            }
+        })
             .then(response => {
                 return response.json();
             })
@@ -29,7 +35,8 @@ const PostDetails = () => {
         fetch(`http://localhost:8080/feed/post/${_id}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + jwtToken
             }
         })
             .then(response => {

@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { JwtTokenContext } from '../../contexts/jwt-token.context';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const { jwtToken, setJwtToken } = useContext(JwtTokenContext)
+
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -26,6 +33,7 @@ const Login = () => {
 
                 // Store the token in localStorage
                 localStorage.setItem('token', token);
+                setJwtToken(token);
 
                 // Redirect or perform any other action after successful login
                 console.log('Login successful. Token:', token);

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
+import { JwtTokenContext } from "../../contexts/jwt-token.context";
 
 const EditPost = () => {
 
@@ -12,9 +13,15 @@ const EditPost = () => {
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
+    const { jwtToken } = useContext(JwtTokenContext);
+
 
     useEffect(() => {
-        fetch(`http://localhost:8080/feed/post/${_id}`)
+        fetch(`http://localhost:8080/feed/post/${_id}`, {
+            headers: {
+                Authorization: 'Bearer ' + jwtToken
+            }
+        })
             .then(response => {
                 return response.json();
             })
@@ -40,7 +47,10 @@ const EditPost = () => {
 
         fetch(`http://localhost:8080/feed/post/${_id}`, {
             method: "PUT",
-            body: formData
+            body: formData,
+            headers: {
+                Authorization: 'Bearer ' + jwtToken
+            }
         })
             .then(response => {
                 if (!response.ok) {
