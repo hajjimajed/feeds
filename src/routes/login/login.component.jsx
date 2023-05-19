@@ -10,16 +10,8 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const { jwtToken, setJwtToken } = useContext(JwtTokenContext)
-
+    const { jwtToken, setJwtToken, setUserData } = useContext(JwtTokenContext);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            setJwtToken(token);
-        }
-    }, []);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -44,6 +36,25 @@ const Login = () => {
                 // Store the token in localStorage
                 localStorage.setItem('token', token);
                 setJwtToken(token);
+
+                // Fetch user data based on userId
+                fetch(`http://localhost:8080/auth/user-data`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                    .then(response => response.json())
+                    .then(userData => {
+                        // Assuming the userData contains the user data
+                        console.log('User data:', userData);
+                        setUserData(userData.user);
+                        localStorage.setItem('userData', JSON.stringify(userData.user));
+                        // Save the user data to localStorage or state, if needed
+                    })
+                    .catch(error => {
+                        console.error('Error fetching user data:', error);
+                    });
 
                 // Redirect or perform any other action after successful login
                 console.log('Login successful. Token:', token);

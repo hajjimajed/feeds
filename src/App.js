@@ -9,6 +9,7 @@ import EditPost from './routes/edit-post/edit-post.component';
 
 import Signup from './routes/signup/signup.component';
 import Login from './routes/login/login.component';
+import Profile from './routes/profile/profile.component';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/post/edit/:_id' element={<EditPost />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/login' element={<Login />}></Route>
+        <Route path='/profile' element={<Profile />}></Route>
       </Route>
     </Routes>
   );
