@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.styles.scss'
 
@@ -13,6 +13,13 @@ const Login = () => {
     const { jwtToken, setJwtToken } = useContext(JwtTokenContext)
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            setJwtToken(token);
+        }
+    }, []);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -40,13 +47,13 @@ const Login = () => {
 
                 // Redirect or perform any other action after successful login
                 console.log('Login successful. Token:', token);
+                navigate('/');
             })
             .catch(error => {
                 // Handle any errors
                 console.error('Login error:', error);
             });
     };
-
 
     return (
         <div className='login-container'>

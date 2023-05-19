@@ -55,6 +55,7 @@ const SinglePost = ({ post }) => {
                 <h1>{title}</h1>
                 <img src={image} alt="" />
                 <p>{content}</p>
+                <h3>{creator.name}</h3>
                 <div className="buttons">
                     <Button type="button" buttonType='details' onClick={postNavigate}>Details</Button>
                     <Button type="button" buttonType='delete' onClick={handleDelete}>Delete</Button>

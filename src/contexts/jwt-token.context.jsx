@@ -7,11 +7,10 @@ export const JwtTokenContext = createContext({
 })
 
 export const JwtTokenProvider = ({ children }) => {
-    const [jwtToken, setJwtToken] = useState(null);
-
+    const [jwtToken, setJwtToken] = useState(localStorage.getItem('token'));
 
     const value = { jwtToken, setJwtToken };
 
-    return <JwtTokenContext.Provider value={value} >{children}</JwtTokenContext.Provider>
+    return <JwtTokenContext.Provider value={value}>{children}</JwtTokenContext.Provider>;
 }
 
