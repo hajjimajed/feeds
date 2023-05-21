@@ -7,31 +7,50 @@ const Signup = () => {
 
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
+    const [nickname, setNickname] = useState('');
     const [password, setPassword] = useState('');
+    const [profileImage, setProfileImage] = useState(null);
     const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            const response = await fetch('http://localhost:8080/auth/signup', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, name, password }),
+        const formData = new FormData();
+
+        formData.append('email', email);
+        formData.append('name', name);
+        formData.append('nickname', nickname);
+        formData.append('password', password);
+        formData.append('image', profileImage);
+
+        fetch('http://localhost:8080/auth/signup', {
+            method: 'PUT',
+            body: formData,
+            headers: {
+                Authorization: 'Bearer '
+            },
+        })
+
+            .then((response) => {
+                if (response.ok) {
+                    console.log("User created successfully!");
+                } else {
+                    return response.json(); // parse response body as JSON
+                }
+            })
+            .then((responseData) => {
+                if (responseData && responseData.errors) {
+                    // update component state to display validation errors
+                    const errors = responseData.errors.map((error) => error.msg);
+                    setError(errors);
+                } else {
+                    console.log("User created successfully!");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
             });
-
-            const data = await response.json();
-
-            // Handle successful signup
-            console.log(data);
-        } catch (err) {
-            // Handle signup error
-            console.log(err);
-            setError(err.message);
-        }
-    };
+    }
 
     return (
         <div className="signup-container">
@@ -39,27 +58,47 @@ const Signup = () => {
             {error && <p>{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Email:</label>
+                    <label htmlFor="email">Email:</label>
                     <input
                         type="email"
+                        id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>
-                    <label>Name:</label>
+                    <label htmlFor="name">Name:</label>
                     <input
                         type="text"
+                        id="name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
                 </div>
                 <div>
-                    <label>Password:</label>
+                    <label htmlFor="nickname">Nickname:</label>
+                    <input
+                        type="text"
+                        id="nickname"
+                        value={nickname}
+                        onChange={(e) => setNickname(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="password">Password:</label>
                     <input
                         type="password"
+                        id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="profileImage">Image:</label>
+                    <input
+                        type="file"
+                        id="profileImage"
+                        onChange={(event) => setProfileImage(event.target.files[0])}
                     />
                 </div>
                 <Button type="submit">Signup</Button>
