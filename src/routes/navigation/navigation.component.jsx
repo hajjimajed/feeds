@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import './navigation.styles.scss';
 import { useContext, useEffect, useState } from 'react';
 
@@ -6,9 +6,10 @@ import { JwtTokenContext } from '../../contexts/jwt-token.context';
 
 const Navigation = () => {
 
-    const { jwtToken, setJwtToken } = useContext(JwtTokenContext);
+    const { jwtToken, setJwtToken, setUserData } = useContext(JwtTokenContext);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (jwtToken !== null) {
@@ -21,6 +22,9 @@ const Navigation = () => {
     const logout = () => {
         setJwtToken(null);
         localStorage.removeItem('token');
+        setUserData(null);
+        localStorage.removeItem('userData');
+        navigate('/login')
     };
 
     useEffect(() => {
