@@ -1,24 +1,86 @@
 .post {
+    background-color: #fff;
     padding: 25px;
-    border-radius: 30px;
+    border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    width: fit-content;
-    height: fit-content;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     text-transform: capitalize;
 
-    .buttons {
+    .creator {
+        width: 100%;
         display: flex;
-        justify-content: space-between;
         align-items: center;
+
+        div:first-child {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            img {
+                width: 70px;
+                height: 70px;
+                object-fit: cover;
+            }
+        }
+
+        div:last-child {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+
+            h1 {
+                margin-bottom: 20px;
+                font-size: 22px;
+                font-weight: 500;
+                margin: 0;
+                margin-bottom: 10px;
+            }
+
+            p {
+                color: #0000007f;
+                margin: 0;
+            }
+        }
     }
 
-    img {
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
+    .post-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            width: 100%;
+            height: 70vh;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .post-content-infos {
+            width: 100%;
+
+            div {
+                width: 100%;
+                height: 1px;
+                background-color: #a8a8a841;
+            }
+        }
     }
+}
+
+.buttons {
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

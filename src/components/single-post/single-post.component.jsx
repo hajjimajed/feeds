@@ -50,12 +50,24 @@ const SinglePost = ({ post }) => {
 
     return (
         <>
-            <h1>feeds</h1>
             <div className="post">
-                <h1>{title}</h1>
-                <img src={image} alt="" />
-                <p>{content}</p>
-                <h3>{creator.name}</h3>
+                <div className="creator">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="" />
+                    </div>
+                    <div>
+                        <h1>{creator.name}</h1>
+                        <p>{creator.status}</p>
+                    </div>
+                </div>
+                <div className="post-content">
+                    <img src={image} alt="" />
+                    <div className="post-content-infos">
+                        <h2>{title}</h2>
+                        <div></div>
+                        <p>{content}</p>
+                    </div>
+                </div>
                 <div className="buttons">
                     <Button type="button" buttonType='details' onClick={postNavigate}>Details</Button>
                     <Button type="button" buttonType='delete' onClick={handleDelete}>Delete</Button>

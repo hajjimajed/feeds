@@ -8,6 +8,7 @@
     text-transform: capitalize;
     font-size: 18px;
     font-weight: 700;
+    background-color: #fff;
 
     .navigation-section {
         width: 45%;
@@ -21,14 +22,54 @@
             color: #00000061;
             cursor: pointer;
             transition: 0.2s ease-in-out all;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+
+            .nav-icon {
+                width: 25px;
+                height: auto;
+                margin-right: 5px;
+                transition: 0.2s ease-in-out all;
+
+                path {
+                    fill: #00000061;
+                    transition: 0.2s ease-in-out all;
+                }
+            }
+
+            .log-icon {
+                width: 25px;
+                height: auto;
+                margin-right: 5px;
+                transition: 0.2s ease-in-out all;
+
+                path {
+                    fill: #ffffff;
+                    transition: 0.2s ease-in-out all;
+                }
+            }
 
             &:hover {
                 color: #000000;
+
+                .nav-icon {
+                    path {
+                        fill: #000000;
+                    }
+                }
             }
         }
 
         .navigation-link.active {
             color: #000000;
+
+            .nav-icon {
+                path {
+                    fill: #000000;
+                }
+            }
+
             /* Add any additional styles for the active link here */
         }
     }

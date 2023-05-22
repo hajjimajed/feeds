@@ -3,6 +3,13 @@ import './navigation.styles.scss';
 import { useContext, useEffect, useState } from 'react';
 
 import { JwtTokenContext } from '../../contexts/jwt-token.context';
+import { ReactComponent as HomeIcon } from '../../assets/home.svg'
+import { ReactComponent as Register } from '../../assets/register.svg'
+import { ReactComponent as NewFeed } from '../../assets/new-feed.svg'
+import { ReactComponent as Login } from '../../assets/log-in.svg'
+import { ReactComponent as Logout } from '../../assets/logout.svg'
+import { ReactComponent as Feeds } from '../../assets/feeds.svg'
+import { ReactComponent as Profile } from '../../assets/profile.svg'
 
 const Navigation = () => {
 
@@ -43,6 +50,7 @@ const Navigation = () => {
                                 to='/'
                                 exact
                             >
+                                <HomeIcon className='nav-icon'></HomeIcon>
                                 home
                             </NavLink>
                             <NavLink
@@ -51,6 +59,7 @@ const Navigation = () => {
                                 to='/feeds'
                                 exact
                             >
+                                <Feeds className='nav-icon'></Feeds>
                                 feeds
                             </NavLink>
                             <NavLink
@@ -58,6 +67,7 @@ const Navigation = () => {
                                 activeclassName='active'
                                 to='/create-feed'
                             >
+                                <NewFeed className='nav-icon'></NewFeed>
                                 create feed
                             </NavLink>
                         </div>
@@ -67,12 +77,14 @@ const Navigation = () => {
                                 activeclassName='active'
                                 to='/profile'
                             >
+                                <Profile className='nav-icon'></Profile>
                                 profile
                             </NavLink>
                             <button className='navigation-link'
                                 activeclassName='active'
                                 onClick={logout}
                             >
+                                <Logout className='log-icon'></Logout>
                                 logout
                             </button>
                         </div>
@@ -89,6 +101,7 @@ const Navigation = () => {
                                     to='/'
                                     exact
                                 >
+                                    <HomeIcon className='nav-icon'></HomeIcon>
                                     home
                                 </NavLink>
                             </div>
@@ -98,6 +111,7 @@ const Navigation = () => {
                                     activeclassName='active'
                                     to='/signup'
                                 >
+                                    <Register className='nav-icon'></Register>
                                     signup
                                 </NavLink>
                                 <NavLink
@@ -105,6 +119,7 @@ const Navigation = () => {
                                     activeclassName='active'
                                     to='/login'
                                 >
+                                    <Login className='log-icon'></Login>
                                     login
                                 </NavLink>
                             </div>

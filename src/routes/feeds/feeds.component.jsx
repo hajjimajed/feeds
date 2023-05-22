@@ -38,7 +38,7 @@ const Feeds = () => {
         <>
             {
                 jwtToken ?
-                    <div>
+                    <div className="feeds-container">
                         {posts.map((post) => {
                             return <SinglePost key={post._id} post={post} />;
                         })}
